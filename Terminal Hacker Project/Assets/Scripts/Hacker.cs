@@ -2,6 +2,8 @@
 
 public class Hacker : MonoBehaviour
 {
+    private int level;
+
     private void Start()
     {
         ShowMainMenu();
@@ -12,6 +14,11 @@ public class Hacker : MonoBehaviour
         if(input == "menu")
         {
             ShowMainMenu();
+        }
+        else if(input == "1" || input == "2" || input == "3")
+        {
+            level = int.Parse(input);
+            StartGame();
         }
         else if(input == "007")
         {
@@ -31,5 +38,10 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("Press 2 for the police station.");
         Terminal.WriteLine("Press 3 for NASA.");
         Terminal.WriteLine("Enter the selection:");
+    }
+
+    private void StartGame()
+    {
+        Terminal.WriteLine("You have chosen level " + level);
     }
 }
