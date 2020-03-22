@@ -4,20 +4,28 @@ public class Hacker : MonoBehaviour
 {
     private void Start()
     {
-        ShowMainMenu("Hello Hacler!");
+        ShowMainMenu();
     }
 
     private void OnUserInput(string input)
     {
-        Debug.Log(input == "1");
+        if(input == "menu")
+        {
+            ShowMainMenu();
+        }
+        else if(input == "007")
+        {
+            Terminal.WriteLine("Please select a level Mr.Bond.");
+        }
+        else
+        {
+            Terminal.WriteLine("Please choose a valid level!");
+        }
     }
 
-    private void ShowMainMenu(string greeting)
+    private void ShowMainMenu()
     {
         Terminal.ClearScreen();
-
-        Terminal.WriteLine(greeting);
-
         Terminal.WriteLine("What would you to hack into?");
         Terminal.WriteLine("Press 1 for the local library.");
         Terminal.WriteLine("Press 2 for the police station.");
