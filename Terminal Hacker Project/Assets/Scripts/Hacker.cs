@@ -9,7 +9,7 @@ public class Hacker : MonoBehaviour
 
     private void OnUserInput(string input)
     {
-        Debug.Log(input);
+        Debug.Log(input == "1");
     }
 
     private void ShowMainMenu(string greeting)
