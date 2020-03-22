@@ -6,6 +6,7 @@ public class Hacker : MonoBehaviour
 
     private int level;
     private Screen currentScreen;
+    private string password;
 
     private void Start()
     {
@@ -22,12 +23,41 @@ public class Hacker : MonoBehaviour
         {
             RunMainMenu(input);
         }
+        else if(currentScreen == Screen.WaitingForPassword)
+        {
+            CheckPassword(input);
+        }
+    }
+
+    private void CheckPassword(string input)
+    {
+        if(input == password)
+        {
+            Terminal.WriteLine("WELL DONE!");
+        }
+        else
+        {
+            Terminal.WriteLine("Sorry, wrong password!");
+        }
     }
 
     private void RunMainMenu(string input)
     {
-        if (input == "1" || input == "2" || input == "3")
+        if (input == "1")
         {
+            password = "easy";
+            level = int.Parse(input);
+            StartGame();
+        }
+        else if (input == "2")
+        {
+            password = "medium";
+            level = int.Parse(input);
+            StartGame();
+        }
+        else if (input == "3")
+        {
+            password = "hard";
             level = int.Parse(input);
             StartGame();
         }
