@@ -1,0 +1,9 @@
+#DIRECTORIES
+*/Library/*
+*/Logs/*
+*/Temp/*
+/*.vs/*
+
+#FILE EXTENSIONS
+*.sln
+*.csproj
