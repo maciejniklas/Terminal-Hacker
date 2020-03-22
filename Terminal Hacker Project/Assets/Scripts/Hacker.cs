@@ -4,14 +4,13 @@ public class Hacker : MonoBehaviour
 {
     private void Start()
     {
-        ShowMainMenu();
+        ShowMainMenu("Hello Hacler!");
     }
 
-    private void ShowMainMenu()
+    private void ShowMainMenu(string greeting)
     {
         Terminal.ClearScreen();
 
-        string greeting = "Hello Hacker!";
         Terminal.WriteLine(greeting);
 
         Terminal.WriteLine("What would you to hack into?");
