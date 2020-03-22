@@ -7,6 +7,7 @@ public class Hacker : MonoBehaviour
     private int level;
     private Screen currentScreen;
     private string password;
+    private const string menuHint = "You may type menu at any time.";
 
     private string[] level1Passwords =
     {
@@ -15,6 +16,10 @@ public class Hacker : MonoBehaviour
     private string[] level2Passwords =
     {
         "prisoner", "handcuffs", "holster", "uniform", "arrest"
+    };
+    private string[] level3Passwords =
+    {
+        "starfield", "telescope", "environment", "exploration", "astronauts"
     };
 
     private void Start()
@@ -38,6 +43,16 @@ public class Hacker : MonoBehaviour
         }
     }
 
+    private void AskForPassword()
+    {
+        currentScreen = Screen.WaitingForPassword;
+        SetRandomPassword();
+
+        Terminal.ClearScreen();
+        Terminal.WriteLine("Please enter your password, hint: " + password.Anagram());
+        Terminal.WriteLine(menuHint);
+    }
+
     private void CheckPassword(string input)
     {
         if(input == password)
@@ -46,7 +61,7 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("Sorry, wrong password!");
+            AskForPassword();
         }
     }
 
@@ -59,11 +74,11 @@ public class Hacker : MonoBehaviour
 
     private void RunMainMenu(string input)
     {
-        bool isValidLevelNumber = input == "1" || input == "2";
+        bool isValidLevelNumber = input == "1" || input == "2" || input == "3";
         if(isValidLevelNumber)
         {
             level = int.Parse(input);
-            StartGame();
+            AskForPassword();
         }
         else if (input == "007")
         {
@@ -72,6 +87,26 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Please choose a valid level!");
+            Terminal.WriteLine(menuHint);
+        }
+    }
+
+    private void SetRandomPassword()
+    {
+        switch (level)
+        {
+            case 1:
+                password = level1Passwords[Random.Range(0, level1Passwords.Length)];
+                break;
+            case 2:
+                password = level2Passwords[Random.Range(0, level2Passwords.Length)];
+                break;
+            case 3:
+                password = level3Passwords[Random.Range(0, level3Passwords.Length)];
+                break;
+            default:
+                Debug.LogError("Invalid level number!");
+                break;
         }
     }
 
@@ -89,6 +124,7 @@ public class Hacker : MonoBehaviour
 (______(/
 "
                 );
+                Terminal.WriteLine("Play again for a greater challange.");
                 break;
             case 2:
                 Terminal.WriteLine("Have a prison key...");
@@ -100,6 +136,17 @@ o`   'oooo()  | ________   _   _)
   `ooo'   `---'         | | | |
 "
                 );
+                Terminal.WriteLine("Play again for a greater challange.");
+                break;
+            case 3:
+                Terminal.WriteLine(@"
+ _ __   __ _ ___  __ _ 
+| '_ \ / _` / __|/ _` |
+| | | | (_| \__ \ (_| |
+|_| |_|\__,_|___/\__,_|
+"
+                );
+                Terminal.WriteLine("Welcome to NASA's internal system!");
                 break;
         }
     }
@@ -114,26 +161,5 @@ o`   'oooo()  | ________   _   _)
         Terminal.WriteLine("Press 2 for the police station.");
         Terminal.WriteLine("Press 3 for NASA.");
         Terminal.WriteLine("Enter the selection:");
-    }
-
-    private void StartGame()
-    {
-        currentScreen = Screen.WaitingForPassword;
-
-        switch(level)
-        {
-            case 1:
-                password = level1Passwords[Random.Range(0, level1Passwords.Length)];
-                break;
-            case 2:
-                password = level2Passwords[Random.Range(0, level2Passwords.Length)];
-                break;
-            default:
-                Debug.LogError("Invalid level number!");
-                break;
-        }
-
-        Terminal.ClearScreen();
-        Terminal.WriteLine("Please enter your password:");
     }
 }
