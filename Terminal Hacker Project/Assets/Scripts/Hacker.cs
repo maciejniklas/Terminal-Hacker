@@ -7,6 +7,11 @@ public class Hacker : MonoBehaviour
         ShowMainMenu("Hello Hacler!");
     }
 
+    private void OnUserInput(string input)
+    {
+        Debug.Log(input);
+    }
+
     private void ShowMainMenu(string greeting)
     {
         Terminal.ClearScreen();
