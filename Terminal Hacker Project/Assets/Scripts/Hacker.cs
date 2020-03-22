@@ -18,12 +18,20 @@ public class Hacker : MonoBehaviour
         {
             ShowMainMenu();
         }
-        else if(input == "1" || input == "2" || input == "3")
+        else if(currentScreen == Screen.MainMenu)
+        {
+            RunMainMenu(input);
+        }
+    }
+
+    private void RunMainMenu(string input)
+    {
+        if (input == "1" || input == "2" || input == "3")
         {
             level = int.Parse(input);
             StartGame();
         }
-        else if(input == "007")
+        else if (input == "007")
         {
             Terminal.WriteLine("Please select a level Mr.Bond.");
         }
