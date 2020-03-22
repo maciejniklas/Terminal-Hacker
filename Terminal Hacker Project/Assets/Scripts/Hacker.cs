@@ -2,7 +2,10 @@
 
 public class Hacker : MonoBehaviour
 {
+    private enum Screen { MainMenu, WaitingForPassword, WinScreen };
+
     private int level;
+    private Screen currentScreen;
 
     private void Start()
     {
@@ -38,10 +41,13 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("Press 2 for the police station.");
         Terminal.WriteLine("Press 3 for NASA.");
         Terminal.WriteLine("Enter the selection:");
+        currentScreen = Screen.MainMenu;
     }
 
     private void StartGame()
     {
         Terminal.WriteLine("You have chosen level " + level);
+        Terminal.WriteLine("Please enter your password:");
+        currentScreen = Screen.WaitingForPassword;
     }
 }
