@@ -52,15 +52,9 @@ public class Hacker : MonoBehaviour
 
     private void RunMainMenu(string input)
     {
-        if (input == "1")
+        bool isValidLevelNumber = input == "1" || input == "2";
+        if(isValidLevelNumber)
         {
-            password = level1Passwords[2];
-            level = int.Parse(input);
-            StartGame();
-        }
-        else if (input == "2")
-        {
-            password = level2Passwords[2];
             level = int.Parse(input);
             StartGame();
         }
@@ -76,19 +70,34 @@ public class Hacker : MonoBehaviour
 
     private void ShowMainMenu()
     {
+        currentScreen = Screen.MainMenu;
+
         Terminal.ClearScreen();
         Terminal.WriteLine("What would you to hack into?");
         Terminal.WriteLine("Press 1 for the local library.");
         Terminal.WriteLine("Press 2 for the police station.");
         Terminal.WriteLine("Press 3 for NASA.");
         Terminal.WriteLine("Enter the selection:");
-        currentScreen = Screen.MainMenu;
     }
 
     private void StartGame()
     {
-        Terminal.WriteLine("You have chosen level " + level);
-        Terminal.WriteLine("Please enter your password:");
         currentScreen = Screen.WaitingForPassword;
+
+        switch(level)
+        {
+            case 1:
+                password = level1Passwords[1];
+                break;
+            case 2:
+                password = level2Passwords[1];
+                break;
+            default:
+                Debug.LogError("Invalid level number!");
+                break;
+        }
+
+        Terminal.ClearScreen();
+        Terminal.WriteLine("Please enter your password:");
     }
 }
