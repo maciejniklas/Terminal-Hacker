@@ -42,12 +42,19 @@ public class Hacker : MonoBehaviour
     {
         if(input == password)
         {
-            Terminal.WriteLine("WELL DONE!");
+            DisplayWinScreen();
         }
         else
         {
             Terminal.WriteLine("Sorry, wrong password!");
         }
+    }
+
+    private void DisplayWinScreen()
+    {
+        currentScreen = Screen.WinScreen;
+        Terminal.ClearScreen();
+        ShowLevelReward();
     }
 
     private void RunMainMenu(string input)
@@ -65,6 +72,35 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Please choose a valid level!");
+        }
+    }
+
+    private void ShowLevelReward()
+    {
+        switch(level)
+        {
+            case 1:
+                Terminal.WriteLine("Have a book...");
+                Terminal.WriteLine(@"
+    _______
+   /      /,
+  /      //
+ /______//
+(______(/
+"
+                );
+                break;
+            case 2:
+                Terminal.WriteLine("Have a prison key...");
+                Terminal.WriteLine(@"
+  ooo,    .---.
+ o`  o   /    |\________________
+o`   'oooo()  | ________   _   _)
+`oo   o` \    |/        | | | |
+  `ooo'   `---'         | | | |
+"
+                );
+                break;
         }
     }
 
