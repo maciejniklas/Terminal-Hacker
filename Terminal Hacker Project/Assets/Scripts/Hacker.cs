@@ -80,6 +80,11 @@ public class Hacker : MonoBehaviour
             level = int.Parse(input);
             AskForPassword();
         }
+        else if (input == "exit" || input == "quit" || input == "close")
+        {
+            Terminal.WriteLine("If on the web clost the tab.");
+            Application.Quit();
+        }
         else if (input == "007")
         {
             Terminal.WriteLine("Please select a level Mr.Bond.");
