@@ -8,6 +8,15 @@ public class Hacker : MonoBehaviour
     private Screen currentScreen;
     private string password;
 
+    private string[] level1Passwords =
+    {
+        "books", "aisle", "shelf", "password", "font", "borrow"
+    };
+    private string[] level2Passwords =
+    {
+        "prisoner", "handcuffs", "holster", "uniform", "arrest"
+    };
+
     private void Start()
     {
         ShowMainMenu();
@@ -45,19 +54,13 @@ public class Hacker : MonoBehaviour
     {
         if (input == "1")
         {
-            password = "easy";
+            password = level1Passwords[2];
             level = int.Parse(input);
             StartGame();
         }
         else if (input == "2")
         {
-            password = "medium";
-            level = int.Parse(input);
-            StartGame();
-        }
-        else if (input == "3")
-        {
-            password = "hard";
+            password = level2Passwords[2];
             level = int.Parse(input);
             StartGame();
         }
