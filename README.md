@@ -1,14 +1,31 @@
-# Terminal Hacker
-Project made during Complete C# Unity Developer 3D: Learn to Code Making Games udemy course [https://www.udemy.com/course/unitycourse2/]
+# Terminal hacker
+This game make from you a real hacker.
+
+![Project logo](./Images/logo.png)
 
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Status](#status)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
 
 ## General info
-This is a game where you are able to hack in an old-shool terminal window. Purpose of this project is ti learn basic foundation of C# skills.
+Main goal of this project was to learn C# for game development. It was created in purpose of udemy course titled 'Complete C# Unity Developer 3D: Learn to Code Making Games'.
 
 ## Technologies
-Project is created with:
-* Unity version: 2018.4.14f1
-* C# version: 8
+* Unity 2018.4.14f1
+* C# 8
+
+## Status
+Project is: finished
+
+## Inspiration
+https://www.udemy.com/course/unitycourse2/
+
+## Contact
+Created by Maciej Niklas
+maciejniklas12@gmail.com - feel free to contact me!
+
+Check out my blog where I'm posting details about my current projects.
+https://maciejniklas.blogspot.com/
